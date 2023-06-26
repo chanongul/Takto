@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Pending",
+    "value": "pending"
+  },
+  {
+    "title": "Shipped",
+    "value": "shipped"
+  },
+  {
+    "title": "Delivering",
+    "value": "delivering"
+  },
+  {
+    "title": "Delivered",
+    "value": "delivered"
+  },
+  {
+    "title": "Cancelled",
+    "value": "cancelled"
+  },
+  {
+    "title": "Returned",
+    "value": "returned"
+  }
+]

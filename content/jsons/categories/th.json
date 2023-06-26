@@ -1,0 +1,34 @@
+[
+  {
+    "title": "ผู้หญิง",
+    "value": "women"
+  },
+  {
+    "title": "ผู้ชาย",
+    "value": "men"
+  },
+  {
+    "title": "เด็ก",
+    "value": "children"
+  },
+  {
+    "title": "เสื้อ",
+    "value": "tops"
+  },
+  {
+    "title": "กางเกง",
+    "value": "bottoms"
+  },
+  {
+    "title": "ชุด",
+    "value": "dresses"
+  },
+  {
+    "title": "รองเท้า",
+    "value": "footwear"
+  },
+  {
+    "title": "อื่น ๆ",
+    "value": "accessories"
+  }
+]

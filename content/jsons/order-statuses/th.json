@@ -1,0 +1,26 @@
+[
+  {
+    "title": "กำลังดำเนินการ",
+    "value": "pending"
+  },
+  {
+    "title": "จัดส่งแล้ว",
+    "value": "shipped"
+  },
+  {
+    "title": "กำลังจัดส่ง",
+    "value": "delivering"
+  },
+  {
+    "title": "จัดส่งสำเร็จ",
+    "value": "delivered"
+  },
+  {
+    "title": "ยกเลิกคำสั่งซื้อ",
+    "value": "cancelled"
+  },
+  {
+    "title": "ส่งคืนสินค้าแล้ว",
+    "value": "returned"
+  }
+]
