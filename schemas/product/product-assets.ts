@@ -22,6 +22,7 @@ export default defineType({
       title: 'product',
       type: 'reference',
       to: [{ type: 'productVariant' }],
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'image',
@@ -30,6 +31,7 @@ export default defineType({
       options: {
         hotspot: true,
       },
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'model',
@@ -38,6 +40,7 @@ export default defineType({
       options: {
         accept: '.glb,.gITF,.obj,.fbx',
       },
+      validation: (Rule) => Rule.required(),
     }),
   ],
 })

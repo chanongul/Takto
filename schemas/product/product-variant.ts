@@ -4,7 +4,9 @@ export default defineType({
   name: 'productVariant',
   title: 'Product Variant',
   type: 'document',
-  initialValue: {},
+  initialValue: {
+    amountLeft: 100,
+  },
   preview: {
     select: {
       product: 'product.name',
@@ -23,28 +25,33 @@ export default defineType({
       title: 'Product',
       type: 'reference',
       to: [{ type: 'product' }],
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'color',
+      name: 'productColor',
       title: 'Color',
       type: 'reference',
       to: [{ type: 'productColor' }],
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'size',
+      name: 'productSize',
       title: 'Size',
       type: 'reference',
       to: [{ type: 'productSize' }],
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'amountLeft',
       title: 'Amount Left in Stock',
       type: 'number',
+      validation: (Rule) => Rule.required().positive().max(50000),
     }),
     defineField({
       name: 'price',
       title: 'Price',
       type: 'number',
+      validation: (Rule) => Rule.required().positive(),
     }),
   ],
 })

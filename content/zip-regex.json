@@ -1,0 +1,70 @@
+[
+  {
+    "country": "bn",
+    "zipRegex": "^[A-Z]{2}\\d{4}$"
+  },
+  {
+    "country": "kh",
+    "zipRegex": "^\\d{5}$"
+  },
+  {
+    "country": "cn",
+    "zipRegex": "^\\d{6}$"
+  },
+  {
+    "country": "id",
+    "zipRegex": "^\\d{5}$"
+  },
+  {
+    "country": "jp",
+    "zipRegex": "^\\d{3}-\\d{4}$"
+  },
+  {
+    "country": "la",
+    "zipRegex": "^\\d{5}$"
+  },
+  {
+    "country": "my",
+    "zipRegex": "^\\d{5}$"
+  },
+  {
+    "country": "mn",
+    "zipRegex": "^\\d{6}$"
+  },
+  {
+    "country": "mm",
+    "zipRegex": "^\\d{5}$"
+  },
+  {
+    "country": "kp",
+    "zipRegex": "^\\d{6}$"
+  },
+  {
+    "country": "ph",
+    "zipRegex": "^\\d{4}$"
+  },
+  {
+    "country": "sg",
+    "zipRegex": "^\\d{6}$"
+  },
+  {
+    "country": "kr",
+    "zipRegex": "^\\d{5}$"
+  },
+  {
+    "country": "tw",
+    "zipRegex": "^\\d{3}(\\d{2})?$"
+  },
+  {
+    "country": "th",
+    "zipRegex": "^\\d{5}$"
+  },
+  {
+    "country": "tl",
+    "zipRegex": "^\\d{4}$"
+  },
+  {
+    "country": "vn",
+    "zipRegex": "^\\d{6}$"
+  }
+]

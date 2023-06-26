@@ -21,6 +21,7 @@ export default defineType({
       title: 'User',
       type: 'reference',
       to: [{ type: 'user' }],
+      validation: (Rule) => Rule.required(),
     }),
   ],
 })

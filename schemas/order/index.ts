@@ -1,19 +1,28 @@
 import { defineField, defineType } from 'sanity'
 import { SanityClient } from 'sanity'
-import orderStatuses from '../../content/jsons/order-statuses/en.json'
+import orderStatuses from '../../content/order-statuses/en.json'
+import {
+  GET_CURRENT_ORDER_NUMBER_QUERY,
+  GET_USER_ADDRESS_BY_USER_ID_FILTER,
+} from '../../utils/queries'
 
 function orderNumberFormatter(ordNum: number) {
   const str = String(ordNum)
-  const zerosToAdd = 10 - str.length
+  const zerosToAdd = 5 - str.length
   const paddedNumber = '0'.repeat(zerosToAdd) + str
-  return 'LUCA' + paddedNumber
+  const date = new Date()
+  return (
+    'TO' +
+    date.getFullYear().toString() +
+    (date.getMonth() + 1).toString() +
+    date.getDate().toString() +
+    paddedNumber
+  )
 }
 
 async function getCurrentOrderNumber(client: SanityClient) {
   try {
-    const result = await client.fetch(
-      '*[_type == "order"] | order(number desc)[0]'
-    )
+    const result = await client.fetch(GET_CURRENT_ORDER_NUMBER_QUERY)
     if (result && result.orderNumber) {
       let res = parseInt((result.number as string).slice(4))
       return orderNumberFormatter(res + 1)
@@ -71,6 +80,7 @@ export default defineType({
       title: 'User',
       type: 'reference',
       to: [{ type: 'user' }],
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'destination',
@@ -78,8 +88,16 @@ export default defineType({
       type: 'reference',
       to: [{ type: 'userAddress' }],
       options: {
-        filter: '',
+        filter: ({ document }) => {
+          return {
+            filter: GET_USER_ADDRESS_BY_USER_ID_FILTER,
+            params: {
+              userId: (document.user as any)._ref,
+            },
+          }
+        },
       },
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'createdAt',
@@ -94,6 +112,7 @@ export default defineType({
       options: {
         list: orderStatuses,
       },
+      validation: (Rule) => Rule.required(),
     }),
   ],
 })

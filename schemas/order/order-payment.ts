@@ -24,6 +24,7 @@ export default defineType({
       title: 'Order',
       type: 'reference',
       to: [{ type: 'order' }],
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'createdAt',
@@ -35,6 +36,7 @@ export default defineType({
       name: 'amount',
       title: 'Amount',
       type: 'number',
+      validation: (Rule) => Rule.required().positive(),
     }),
   ],
 })

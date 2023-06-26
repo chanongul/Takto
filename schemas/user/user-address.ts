@@ -1,32 +1,42 @@
-import { defineField, defineType } from 'sanity'
+import { ValidationContext, defineField, defineType } from 'sanity'
+import countries from '../../content/countries/en.json'
+import { ZIP_FORMAT } from '../../utils/regexen'
 
 export default defineType({
   name: 'userAddress',
   title: 'User Address',
   type: 'document',
-  initialValue: {},
   preview: {
     select: {
       fname: 'user.fname',
       lname: 'user.lname',
+      nickname: 'name',
     },
-    prepare: ({ fname, lname }) => {
+    prepare: ({ fname, lname, nickname }) => {
       return {
-        title: `${fname} ${lname}'s Address`,
+        title: `${fname} ${lname}'s ${nickname}`,
       }
     },
   },
   fields: [
     defineField({
+      name: 'name',
+      title: 'Nickname',
+      type: 'string',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
       name: 'user',
       title: 'User',
       type: 'reference',
       to: [{ type: 'user' }],
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'street',
       title: 'Street',
       type: 'string',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'detail',
@@ -42,16 +52,31 @@ export default defineType({
       name: 'city',
       title: 'City',
       type: 'string',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'country',
       title: 'Country',
       type: 'string',
+      options: {
+        list: countries,
+      },
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'zip',
       title: 'ZIP Code',
       type: 'string',
+      validation: (Rule) =>
+        Rule.required().custom((zip, context) => {
+          const country = context.document?.country
+          const selectedCountry = countries.find((val) => val.value === country)
+          const zipRegex = ZIP_FORMAT(selectedCountry?.value || '')
+          if (!zipRegex.test(zip || '')) {
+            return `Invalid ZIP code. Please provide a valid ZIP code for ${selectedCountry?.title}.`
+          }
+          return true
+        }),
     }),
   ],
 })

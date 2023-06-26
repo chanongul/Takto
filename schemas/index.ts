@@ -5,6 +5,7 @@ import orderItem from "./order/order-item";
 import orderPayment from "./order/order-payment";
 import product from "./product";
 import productAssets from "./product/product-assets";
+import productCollection from "./product/product-collection";
 import productColor from "./product/product-color";
 import productSize from "./product/product-size";
 import productVariant from "./product/product-variant";
@@ -18,8 +19,9 @@ export const schemaTypes = [
   orderItem,
   orderPayment,
   product,
-  productColor,
   productAssets,
+  productCollection,
+  productColor,
   productSize,
   productVariant,
   user,
