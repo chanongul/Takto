@@ -2,8 +2,12 @@
   "name": "to",
   "private": true,
   "scripts": {
-    "build": "nuxt build",
     "dev": "nuxt dev & sanity dev",
+    "dev:nuxt": "nuxt dev",
+    "dev:sanity": "sanity dev",
+    "build:nuxt": "nuxt build",
+    "build:sanity": "sanity build",
+    "deploy:sanity": "sanity deploy",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
