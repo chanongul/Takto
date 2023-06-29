@@ -1,21 +1,12 @@
 import { ParsedContent } from '@nuxt/content/dist/runtime/types'
 
 declare global {
-  interface Category {
+  type JsonContent = {
     title: string
     value: string
   }
 
-  interface Categories extends ParsedContent, Array(Category) {}
-
-  interface OrderStatus {
-    title: string
-    value: string
-  }
-
-  interface OrderStatuses extends ParsedContent, Array(OrderStatus) { }
-  
-  
+  type JsonContents = ParsedContent & Array<JsonContent>
 }
 
 export {}

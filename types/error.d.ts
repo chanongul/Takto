@@ -1,5 +1,5 @@
 declare global {
-  interface IError {
+  type ErrorWithCode = Error & {
     statusCode: number
     message: string
   }

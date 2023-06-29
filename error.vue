@@ -4,6 +4,6 @@
 
 <script setup lang="ts">
 defineProps<{
-  error: IError
+  error: ErrorWithCode
 }>()
 </script>
