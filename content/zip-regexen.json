@@ -1,0 +1,70 @@
+[
+  {
+    "title": "bn",
+    "value": "^[A-Z]{2}\\d{4}$"
+  },
+  {
+    "title": "kh",
+    "value": "^\\d{5}$"
+  },
+  {
+    "title": "cn",
+    "value": "^\\d{6}$"
+  },
+  {
+    "title": "id",
+    "value": "^\\d{5}$"
+  },
+  {
+    "title": "jp",
+    "value": "^\\d{3}-\\d{4}$"
+  },
+  {
+    "title": "la",
+    "value": "^\\d{5}$"
+  },
+  {
+    "title": "my",
+    "value": "^\\d{5}$"
+  },
+  {
+    "title": "mn",
+    "value": "^\\d{6}$"
+  },
+  {
+    "title": "mm",
+    "value": "^\\d{5}$"
+  },
+  {
+    "title": "kp",
+    "value": "^\\d{6}$"
+  },
+  {
+    "title": "ph",
+    "value": "^\\d{4}$"
+  },
+  {
+    "title": "sg",
+    "value": "^\\d{6}$"
+  },
+  {
+    "title": "kr",
+    "value": "^\\d{5}$"
+  },
+  {
+    "title": "tw",
+    "value": "^\\d{3}(\\d{2})?$"
+  },
+  {
+    "title": "th",
+    "value": "^\\d{5}$"
+  },
+  {
+    "title": "tl",
+    "value": "^\\d{4}$"
+  },
+  {
+    "title": "vn",
+    "value": "^\\d{6}$"
+  }
+]
