@@ -9,7 +9,7 @@ export default defineType({
   title: 'User',
   type: 'document',
   initialValue: {
-    lang: language.slice(0, 2) === 'th' ? 'th' : 'en',
+    lang: language.slice(0, 2) === 'en' ? 'en' : 'th',
   },
   preview: {
     select: {
@@ -46,18 +46,17 @@ export default defineType({
             : context.document?._id
           const { getClient } = context
           const client = getClient({ apiVersion: '2023-06-26' })
-          const getExistingEmails = await client.fetch(GET_USERS_QUERY)
-          const emails = getExistingEmails.map(
-            (val: { _id: string; email: string }) => {
-              const val_id = val._id.startsWith('drafts.')
-                ? val._id.slice(7)
-                : val._id
-              if (val_id !== _id) {
-                return val.email
+          const getUsers: User[] = await client.fetch(GET_USERS_QUERY)
+          const existingEmails = getUsers
+            .filter((val: User) => {
+              if (val._id.startsWith('drafts.')) {
+                return false
+              } else {
+                return val._id !== _id
               }
-            }
-          )
-          if (email !== undefined && emails.includes(email)) {
+            })
+            .map((val) => val.email)
+          if (email !== undefined && existingEmails.includes(email)) {
             return 'This email is already in use. Try another one.'
           }
           return true

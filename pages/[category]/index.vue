@@ -5,9 +5,9 @@
 <script setup lang="ts">
 const { params } = useRoute()
 
-const categories: Category[] = await useCategories()
+const { contents: categories } = await useJson('categories')
 
 const category: string =
-  categories.find((category: Category) => category.value === params.category)
+  categories.find((category: JsonContent) => category.value === params.category)
     ?.title || ''
 </script>

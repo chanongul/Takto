@@ -55,7 +55,7 @@ export default defineType({
       ordNum: 'number',
       fname: 'user.fname',
       lname: 'user.lname',
-      date: 'createdAt',
+      date: '_createdAt',
     },
     prepare: ({ ordNum, fname, lname, date }) => {
       return {
@@ -98,12 +98,6 @@ export default defineType({
         },
       },
       validation: (Rule) => Rule.required(),
-    }),
-    defineField({
-      name: 'createdAt',
-      title: 'Created At',
-      type: 'datetime',
-      readOnly: true,
     }),
     defineField({
       name: 'status',

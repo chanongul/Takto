@@ -27,12 +27,6 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'createdAt',
-      title: 'Created At',
-      type: 'datetime',
-      readOnly: true,
-    }),
-    defineField({
       name: 'amount',
       title: 'Amount',
       type: 'number',
