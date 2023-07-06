@@ -3,11 +3,11 @@
 </template>
 
 <script setup lang="ts">
-const query = computed(() => useRoute().query)
-const key = ref<string>(query.value.q?.toString() || '')
+const query = computed<string>(() => useRoute().query.q as string)
+const key = ref<string>(query.value?.toString() || '')
 
 watch(
-  () => query.value.q,
+  () => query.value,
   (val) => {
     key.value = val as string
   }

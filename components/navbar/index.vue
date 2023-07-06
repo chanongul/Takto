@@ -5,9 +5,7 @@
         <NuxtLink
           :to="{
             name: 'language',
-            params: {
-              language: params.language,
-            },
+            params: { language: language },
           }"
           >home
         </NuxtLink>
@@ -21,9 +19,7 @@
         <NuxtLink
           :to="{
             name: 'language-cart',
-            params: {
-              language: params.language,
-            },
+            params: { language: language },
           }"
           ><Iconify icon="cart"
         /></NuxtLink>
@@ -32,9 +28,7 @@
         <NuxtLink
           :to="{
             name: 'language-favorites',
-            params: {
-              language: params.language,
-            },
+            params: { language: language },
           }"
           ><Iconify icon="heart"
         /></NuxtLink>
@@ -45,9 +39,7 @@
           v-if="0"
           :to="{
             name: 'language-profile',
-            params: {
-              language: params.language,
-            },
+            params: { language: language },
           }"
           ><Iconify icon="profile"
         /></NuxtLink>
@@ -55,9 +47,7 @@
           v-else
           :to="{
             name: 'language-login',
-            params: {
-              language: params.language,
-            },
+            params: { language: language },
           }"
           >Log In</NuxtLink
         >
@@ -70,14 +60,14 @@
 
 <script setup lang="ts">
 const { push } = useRouter()
-const params = computed(() => useRoute().params).value
+const language = computed<string>(() => useRoute().params.language as string)
 const key = ref<string>('')
 
 function onSearch() {
   push({
     name: 'language-search',
     params: {
-      language: params.language,
+      language: language.value,
     },
     query: {
       q: key.value,

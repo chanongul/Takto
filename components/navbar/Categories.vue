@@ -2,12 +2,12 @@
   <ClientOnly>
     <div v-if="categories" class="flex">
       <NuxtLink
-        v-for="category in categories"
+        v-for="(category) in categories"
         :key="category.value"
         :to="{
           name: 'language-category',
           params: {
-            language: params.language,
+            language: language,
             category: category.value,
           },
         }"
@@ -20,6 +20,6 @@
 </template>
 
 <script setup lang="ts">
-const params = computed(() => useRoute().params)
-const { contents: categories } = await useJson('categories')
+const language = computed<string>(() => useRoute().params.language as string)
+const { contents: categories } = useJson('categories')
 </script>

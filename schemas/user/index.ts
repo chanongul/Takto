@@ -1,6 +1,6 @@
 import { defineField, defineType } from 'sanity'
 import { GET_USERS_QUERY } from '../../utils/queries'
-import languages from '../../content/languages.json'
+import languages from '../../static/languages.json'
 
 const language: string = window.navigator.language
 

@@ -12,6 +12,7 @@
 const props = defineProps<{
   modelValue: string
 }>()
-
-const emit = defineEmits(['update:modelValue'])
+const emit = defineEmits<{
+  (event: 'update:modelValue', data: string): void
+}>()
 </script>

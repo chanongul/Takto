@@ -1,6 +1,6 @@
 import { defineField, defineType } from 'sanity'
 import { SanityClient } from 'sanity'
-import orderStatuses from '../../content/order-statuses/en.json'
+import orderStatuses from '../../static/order-statuses/en.json'
 import {
   GET_CURRENT_ORDER_NUMBER_QUERY,
 } from '../../utils/queries'

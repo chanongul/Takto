@@ -1,4 +1,4 @@
-import zipRegexen from '../content/zip-regexen.json'
+import zipRegexen from '../static/zip-regexen.json'
 
 export const ZIP_FORMAT = (country: string): RegExp => {
   if (!country) {

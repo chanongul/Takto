@@ -1,6 +1,6 @@
 import { defineField, defineType } from 'sanity'
 import { ZIP_FORMAT } from '../../utils/regexen'
-import countries from '../../content/countries/en.json'
+import countries from '../../static/countries/en.json'
 
 export default defineType({
   name: 'userAddress',

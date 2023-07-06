@@ -8,8 +8,8 @@
         :class="['block', 'bg-', 'w-fit', 'cursor-pointer']"
       >
         <CatalogCard
-          :title="params.language === 'en' ? product.title : product.titleTH"
-          :to="`/${params.language}/${category.value}/${product.slug}_${product._id}`"
+          :title="language === 'en' ? product.title : product.titleTH"
+          :to="`/${language}/${category.value}/${product.slug}_${product._id}`"
           :colors="product.colors"
           :price="product.price"
         />
@@ -20,10 +20,13 @@
 </template>
 
 <script setup lang="ts">
-const params = computed(() => useRoute().params)
-const { contents: categories } = await useJson('categories')
-const category = categories.find(
-  (category: JsonContent) => category.value === params.value.category
+const language = computed<string>(() => useRoute().params.language as string)
+const categoryFromParams = computed<string>(
+  () => useRoute().params.category as string
+)
+const { contents: categories } = useJson('categories')
+const category = categories.value.find(
+  (category: FromJson) => category.value === categoryFromParams.value
 ) || { title: '', value: '' }
 const { data: products, pending } = await getProducts()
 

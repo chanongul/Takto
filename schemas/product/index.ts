@@ -1,5 +1,5 @@
 import { defineArrayMember, defineField, defineType } from 'sanity'
-import categories from '../../content/categories/en.json'
+import categories from '../../static/categories/en.json'
 
 export default defineType({
   name: 'product',

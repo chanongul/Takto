@@ -8,7 +8,7 @@ const props = defineProps<{
   color?: string
 }>()
 
-const selectedIcon = computed(() => {
+const selectedIcon = computed<string>(() => {
   // look up https://icones.js.org/
   switch (props.icon) {
     case 'cart':
