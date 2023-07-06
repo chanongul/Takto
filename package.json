@@ -1,5 +1,5 @@
 {
-  "name": "to",
+  "name": "takto",
   "private": true,
   "scripts": {
     "dev": "nuxt dev & sanity dev",
@@ -19,7 +19,6 @@
     "sanity"
   ],
   "devDependencies": {
-    "@nuxt/content": "^2.7.0",
     "@nuxt/devtools": "latest",
     "@nuxt/types": "^2.17.0",
     "@nuxtjs/sanity": "^1.7.3",

@@ -6,7 +6,6 @@ export default defineNuxtConfig({
     dirs: ['stores'],
   },
   modules: [
-    '@nuxt/content',
     '@pinia/nuxt',
     '@nuxtjs/sanity',
     '@nuxtjs/tailwindcss',
