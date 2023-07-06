@@ -1,18 +1,25 @@
 <template>
-  <ul class="flex">
-    <li v-for="category in categories" :key="category.value">
+  <ClientOnly>
+    <div v-if="categories" class="flex">
       <NuxtLink
+        v-for="category in categories"
+        :key="category.value"
         :to="{
-          name: 'category',
-          params: { category: category.value },
+          name: 'language-category',
+          params: {
+            language: params.language,
+            category: category.value,
+          },
         }"
       >
         {{ category.title }}
       </NuxtLink>
-    </li>
-  </ul>
+    </div>
+    <template #placeholder></template>
+  </ClientOnly>
 </template>
 
 <script setup lang="ts">
+const params = computed(() => useRoute().params)
 const { contents: categories } = await useJson('categories')
 </script>

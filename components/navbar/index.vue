@@ -1,23 +1,67 @@
 <template>
   <nav>
     <ul class="flex">
-      <li><NuxtLink to="/">home</NuxtLink></li>
+      <li>
+        <NuxtLink
+          :to="{
+            name: 'language',
+            params: {
+              language: params.language,
+            },
+          }"
+          >home
+        </NuxtLink>
+      </li>
       <li>
         <form @submit.prevent="onSearch">
           <TextInputSearch v-model="key" />
         </form>
       </li>
       <li>
-        <NuxtLink to="/cart"><Iconify icon="cart" /></NuxtLink>
+        <NuxtLink
+          :to="{
+            name: 'language-cart',
+            params: {
+              language: params.language,
+            },
+          }"
+          ><Iconify icon="cart"
+        /></NuxtLink>
       </li>
       <li>
-        <NuxtLink to="/favorites"><Iconify icon="heart" /></NuxtLink>
+        <NuxtLink
+          :to="{
+            name: 'language-favorites',
+            params: {
+              language: params.language,
+            },
+          }"
+          ><Iconify icon="heart"
+        /></NuxtLink>
       </li>
-      <NavbarLanguageChanger />
-      <li v-if="0">
-        <NuxtLink to="/profile"><Iconify icon="profile" /></NuxtLink>
+      <li><NavbarLanguageChanger /></li>
+      <li>
+        <NuxtLink
+          v-if="0"
+          :to="{
+            name: 'language-profile',
+            params: {
+              language: params.language,
+            },
+          }"
+          ><Iconify icon="profile"
+        /></NuxtLink>
+        <NuxtLink
+          v-else
+          :to="{
+            name: 'language-login',
+            params: {
+              language: params.language,
+            },
+          }"
+          >Log In</NuxtLink
+        >
       </li>
-      <li v-else><NuxtLink to="/login">Log In</NuxtLink></li>
     </ul>
 
     <NavbarCategories />
@@ -25,18 +69,19 @@
 </template>
 
 <script setup lang="ts">
-const { name } = useRoute()
-const router = useRouter()
-
+const { push } = useRouter()
+const params = computed(() => useRoute().params).value
 const key = ref<string>('')
 
 function onSearch() {
-  router.push({
-    name: 'search',
+  push({
+    name: 'language-search',
+    params: {
+      language: params.language,
+    },
     query: {
       q: key.value,
     },
-    replace: false,
   })
   key.value = ''
 }
