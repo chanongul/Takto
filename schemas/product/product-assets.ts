@@ -6,8 +6,8 @@ export default defineType({
   type: 'document',
   preview: {
     select: {
-      product: 'product.product.name',
-      color: 'product.color.name',
+      product: 'product.product.title',
+      color: 'product.color.title',
       size: 'product.size.title',
     },
     prepare: ({ product, color, size }) => {
@@ -19,7 +19,7 @@ export default defineType({
   fields: [
     defineField({
       name: 'product',
-      title: 'product',
+      title: 'Product',
       type: 'reference',
       to: [{ type: 'productVariant' }],
       validation: (Rule) => Rule.required(),

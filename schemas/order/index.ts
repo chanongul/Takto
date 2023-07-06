@@ -3,7 +3,6 @@ import { SanityClient } from 'sanity'
 import orderStatuses from '../../content/order-statuses/en.json'
 import {
   GET_CURRENT_ORDER_NUMBER_QUERY,
-  GET_USER_ADDRESS_BY_USER_ID_FILTER,
 } from '../../utils/queries'
 
 function orderNumberFormatter(ordNum: number) {
@@ -90,9 +89,9 @@ export default defineType({
       options: {
         filter: ({ document }) => {
           return {
-            filter: GET_USER_ADDRESS_BY_USER_ID_FILTER,
+            filter: '_type=="userAddress" && references($userId)',
             params: {
-              userId: (document.user as any)._ref,
+              userId: (document.user as EntityRef)._ref,
             },
           }
         },

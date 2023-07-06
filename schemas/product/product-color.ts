@@ -1,4 +1,5 @@
 import { defineField, defineType } from 'sanity'
+import { COLOR_HEX_CODE_FORMAT } from './../../utils/regexen';
 
 export default defineType({
   name: 'productColor',
@@ -9,14 +10,20 @@ export default defineType({
   },
   fields: [
     defineField({
+      name: 'title',
+      title: 'Title',
+      type: 'string',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
       name: 'name',
       title: 'Name',
       type: 'string',
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'nameTH',
-      title: 'Name in Thai',
+      name: 'titleTH',
+      title: 'Title in Thai',
       type: 'string',
       validation: (Rule) => Rule.required(),
     }),
@@ -25,6 +32,12 @@ export default defineType({
       title: 'Extra Price',
       type: 'number',
       validation: (Rule) => Rule.required().positive().max(50000),
+    }),
+    defineField({
+      name: 'code',
+      title: 'Hex Code',
+      type: 'string',
+      validation: (Rule) => Rule.required().regex(COLOR_HEX_CODE_FORMAT).error('Enter color hex code only.'),
     }),
   ],
 })

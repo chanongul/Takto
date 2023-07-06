@@ -7,15 +7,25 @@ export default defineType({
   type: 'document',
   fields: [
     defineField({
-      name: 'name',
-      title: 'Name',
+      name: 'title',
+      title: 'Title',
       type: 'string',
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'nameTH',
-      title: 'Name in Thai',
+      name: 'titleTH',
+      title: 'Title in Thai',
       type: 'string',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'slug',
+      title: 'Name',
+      type: 'slug',
+      options: {
+        source: 'title',
+      },
+      hidden: ({ document }) => !document?.title,
       validation: (Rule) => Rule.required(),
     }),
     defineField({
@@ -29,6 +39,12 @@ export default defineType({
       title: 'Description in Thai',
       type: 'text',
       validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'price',
+      title: 'Price',
+      type: 'number',
+      validation: (Rule) => Rule.required().positive(),
     }),
     defineField({
       name: 'categories',
@@ -58,13 +74,27 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'slug',
-      title: 'Slug',
-      type: 'slug',
-      options: {
-        source: 'name',
-      },
-      hidden: ({ document }) => !document?.name,
+      name: 'colors',
+      title: 'Available Colors',
+      type: 'array',
+      of: [
+        defineArrayMember({
+          type: 'reference',
+          to: [{ type: 'productColor' }],
+        }),
+      ],
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'sizes',
+      title: 'Available Sizes',
+      type: 'array',
+      of: [
+        defineArrayMember({
+          type: 'reference',
+          to: [{ type: 'productSize' }],
+        }),
+      ],
       validation: (Rule) => Rule.required(),
     }),
   ],

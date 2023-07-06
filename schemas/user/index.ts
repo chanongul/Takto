@@ -40,11 +40,10 @@ export default defineType({
       title: 'Email',
       type: 'email',
       validation: (Rule) =>
-        Rule.required().custom(async (email, context) => {
-          const _id = context.document?._id.startsWith('drafts.')
-            ? context.document?._id.slice(7)
-            : context.document?._id
-          const { getClient } = context
+        Rule.required().custom(async (email, { document, getClient }) => {
+          const _id = document?._id.startsWith('drafts.')
+            ? document?._id.slice(7)
+            : document?._id
           const client = getClient({ apiVersion: '2023-06-26' })
           const getUsers: User[] = await client.fetch(GET_USERS_QUERY)
           const existingEmails = getUsers

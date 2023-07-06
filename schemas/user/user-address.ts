@@ -68,8 +68,8 @@ export default defineType({
       title: 'ZIP Code',
       type: 'string',
       validation: (Rule) =>
-        Rule.required().custom((zip, context) => {
-          const country = context.document?.country
+        Rule.required().custom((zip, { document }) => {
+          const country = document?.country
           const selectedCountry = countries.find((val) => val.value === country)
           const zipRegex = ZIP_FORMAT(selectedCountry?.value || '')
           if (!zipRegex.test(zip || '')) {

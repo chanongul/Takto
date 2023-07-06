@@ -9,15 +9,25 @@ export default defineType({
   },
   fields: [
     defineField({
-      name: 'name',
-      title: 'Name',
+      name: 'title',
+      title: 'Title',
       type: 'string',
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'nameTH',
-      title: 'Name in Thai',
+      name: 'titleTH',
+      title: 'Title in Thai',
       type: 'string',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'slug',
+      title: 'Name',
+      type: 'slug',
+      options: {
+        source: 'title',
+      },
+      hidden: ({ document }) => !document?.title,
       validation: (Rule) => Rule.required(),
     }),
     defineField({
@@ -40,12 +50,6 @@ export default defineType({
         hotspot: true,
       },
       // validation: (Rule) => Rule.required(),
-    }),
-    defineField({
-      name: 'date',
-      title: 'Date',
-      type: 'date',
-      readOnly: true,
     }),
   ],
 })
